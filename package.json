@@ -26,7 +26,7 @@
   },
   "scripts": {
     "dev": "set NODE_OPTIONS=--openssl-legacy-provider && npx webpack serve --config webpack.config.dev.cjs",
-    "build": "npm run clean && npx webpack --config webpack.config.prod.cjs",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && npm run clean && npx webpack --config webpack.config.prod.cjs",
     "clean": "rimraf dist/prod"
   }
 }
