@@ -289,6 +289,7 @@ function getPieces() {
                     continue;
                 }
                 if (block.block_level >= 50) {
+                    console.log(block);
                     document.getElementById(`piece2`).value++;
                     continue;
                 }
@@ -318,7 +319,7 @@ function getPieces() {
                     document.getElementById(`piece14`).value++;
                     continue;
                 }
-                if (block.block_type == '제논') {
+                if (block.block_type == '하이브리드') {
                     document.getElementById(`piece15`).value++;
                     continue;
                 }
@@ -332,7 +333,7 @@ function getPieces() {
                     document.getElementById(`piece6`).value++;
                     continue;
                 }
-                if (block.block_type == '도적' || block.block_type == '제논') {
+                if (block.block_type == '하이브리드' || block.block_type == '도적') {
                     document.getElementById(`piece7`).value++;
                     continue;
                 }
@@ -350,12 +351,13 @@ function getPieces() {
                     document.getElementById(`piece3`).value++;
                     continue;
                 }
-                if (block.block_type == '궁수' || block.block_type == '도적' || block.block_type == '제논' || block.block_type == '마법사') {
+                if (block.block_type == '궁수' || block.block_type == '도적' || block.block_type == '하이브리드' || block.block_type == '마법사') {
                     document.getElementById(`piece4`).value++;
                     continue;
                 }
             }
             if (block.block_level >= 100) {
+                console.log(block);
                 document.getElementById(`piece2`).value++;
                 continue;
             }
