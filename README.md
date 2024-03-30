@@ -1,1 +1,1 @@
-https://xenogents.github.io/LegionSolver/
+https://redlime.github.io/LegionSolver/
