@@ -373,5 +373,6 @@ function getPieces() {
 } 
 
 document.getElementById("pieceCountLoad").addEventListener("click", getPieces);
+document.getElementById("apiKeyRegister").addEventListener("click", () => window.open('https://github.com/RedLime/LegionSolver?tab=readme-ov-file#api-%ED%82%A4-%EB%93%B1%EB%A1%9D-%EB%B0%A9%EB%B2%95'));
 
 export { pieceColours, pieces };
