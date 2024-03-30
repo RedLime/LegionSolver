@@ -141,3 +141,26 @@ form {
 #currentPieces {
     white-space: nowrap;
 }
+
+#pieceLoader {
+    padding-top: 20px;
+}
+
+#pieceLoader div {
+    padding-bottom: 6px;
+    margin: 0 auto;
+}
+
+#apiKeyInput {
+    width: 60% !important;
+    float: right;
+}
+
+#charNameInput {
+    width: 40% !important;
+    float: right;
+}
+
+#pieceLoader button {
+    float: right;
+}

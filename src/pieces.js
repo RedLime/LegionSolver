@@ -246,4 +246,130 @@ function clearPieces() {
     updateCurrentPieces();
 }
 
+function getPieces() {
+    const apiKey = document.getElementById("apiKeyInput").value;
+    const characterName = document.getElementById("charNameInput").value;
+    console.log(apiKey);
+    console.log(characterName);
+
+    document.getElementById(`pieceCountLoadResult`).innerHTML = "로드 중입니다...";
+    fetch(`https://open.api.nexon.com/maplestory/v1/id?character_name=${characterName}`, {
+        headers: {
+            'x-nxopen-api-key': apiKey
+        }
+    }).catch(e => {
+        console.log(e);
+        document.getElementById(`pieceCountLoadResult`).innerHTML = "캐릭터를 찾을 수 없습니다.";
+    }).then(data => data.json())
+    .then(json => {
+        const ocid = json.ocid;
+        return fetch(`https://open.api.nexon.com/maplestory/v1/user/union-raider?ocid=${ocid}`, {
+            headers: {
+                'x-nxopen-api-key': apiKey
+            }
+        });
+    }).catch(e => {
+        console.log(e);
+        document.getElementById(`pieceCountLoadResult`).innerHTML = "유니온 정보를 찾을 수 없습니다.";
+    }).then(data => data.json())
+    .then(json => {
+        for (let i = 0; i < pieces.length; i++) {
+            document.getElementById(`piece${i+1}`).value = 0;
+        }
+
+        const blocks = json.union_block;
+        for (const block of blocks) {
+            if (block.block_type == '메이플 M 캐릭터') {
+                if (block.block_level >= 120) {
+                    document.getElementById(`piece6`).value++;
+                    continue;
+                }
+                if (block.block_level >= 70) {
+                    document.getElementById(`piece4`).value++;
+                    continue;
+                }
+                if (block.block_level >= 50) {
+                    document.getElementById(`piece2`).value++;
+                    continue;
+                }
+                if (block.block_level >= 30) {
+                    document.getElementById(`piece1`).value++;
+                    continue;
+                }
+            }
+            if (block.block_level >= 250) {
+                if (block.block_type == '전사') {
+                    document.getElementById(`piece10`).value++;
+                    continue;
+                }
+                if (block.block_type == '궁수') {
+                    document.getElementById(`piece11`).value++;
+                    continue;
+                }
+                if (block.block_type == '도적') {
+                    document.getElementById(`piece12`).value++;
+                    continue;
+                }
+                if (block.block_type == '마법사') {
+                    document.getElementById(`piece13`).value++;
+                    continue;
+                }
+                if (block.block_type == '해적') {
+                    document.getElementById(`piece14`).value++;
+                    continue;
+                }
+                if (block.block_type == '제논') {
+                    document.getElementById(`piece15`).value++;
+                    continue;
+                }
+            }
+            if (block.block_level >= 200) {
+                if (block.block_type == '전사') {
+                    document.getElementById(`piece5`).value++;
+                    continue;
+                }
+                if (block.block_type == '궁수') {
+                    document.getElementById(`piece6`).value++;
+                    continue;
+                }
+                if (block.block_type == '도적' || block.block_type == '제논') {
+                    document.getElementById(`piece7`).value++;
+                    continue;
+                }
+                if (block.block_type == '마법사') {
+                    document.getElementById(`piece8`).value++;
+                    continue;
+                }
+                if (block.block_type == '해적') {
+                    document.getElementById(`piece9`).value++;
+                    continue;
+                }
+            }
+            if (block.block_level >= 140) {
+                if (block.block_type == '전사' || block.block_type == '해적') {
+                    document.getElementById(`piece3`).value++;
+                    continue;
+                }
+                if (block.block_type == '궁수' || block.block_type == '도적' || block.block_type == '제논' || block.block_type == '마법사') {
+                    document.getElementById(`piece4`).value++;
+                    continue;
+                }
+            }
+            if (block.block_level >= 100) {
+                document.getElementById(`piece2`).value++;
+                continue;
+            }
+            if (block.block_level >= 60) {
+                document.getElementById(`piece1`).value++;
+                continue;
+            }
+        }
+
+        updateCurrentPieces();
+        document.getElementById(`pieceCountLoadResult`).innerHTML = "";
+    });
+} 
+
+document.getElementById("pieceCountLoad").addEventListener("click", getPieces);
+
 export { pieceColours, pieces };

@@ -15,12 +15,24 @@
     </select>
   </div>
   <h1 id="title">Legion Solver</h1>
-  <div id="subtitle">Made by: Xenogent of Bera</div>
-  <div id="subtitle">Donate paypal: wellifitisntmoehoward@gmail.com</div>
+  <div id="subtitle">Made by: Xenogent of Bera & Nexon Open API Integration: RedLime</div>
+  <div id="subtitle">Donate paypal: wellifitisntmoehoward@gmail.com (Xenogent of Bera)</div>
   <div id="legionWrapper" class="centerMiddleChild">
     <div id="pieceForm">
       <form></form>
       <button id="clearPieces">Clear Pieces</button>
+      <div id="pieceLoader">
+        <div id="apiKeyField">
+          <label for="apiKeyInput">API Key</label>
+          <input id="apiKeyInput" type="password"> 
+        </div>
+        <div id="charNameField">
+          <label for="charNameInput">캐릭터 이름</label>
+          <input id="charNameInput"> 
+        </div>
+        <div id="pieceCountLoadResult"></div>
+        <button id="pieceCountLoad">유니온 캐릭터 불러오기</button>
+      </div>
     </div>
     <div id="legion">
       <table id="legionBoard">
