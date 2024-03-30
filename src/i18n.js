@@ -6,7 +6,7 @@ function getCurrentLanguage() {
     const region = getRegionByBrowserLanguage();
 
     // default: GMS
-    return localStorage.getItem('i18n') || region || 'GMS';
+    return 'KMS';
 }
 
 function getRegionByBrowserLanguage() {
